@@ -1,0 +1,1324 @@
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf') format('truetype-variations');
+  font-weight: 300 900; /* Define the weight range */
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-variation-settings: 'wdth' 100;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/Merriweather/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf') format('truetype-variations');
+  font-weight: 300 900; /* Define the weight range */
+  font-style: italic;
+  font-optical-sizing: auto;
+  font-variation-settings: 'wdth' 100;
+}
+
+/* Basic styles will go here */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #216390;
+    --primary-color-dark: #1a4e72; /* A darker shade for hover */
+    --secondary-color: #00aebf;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    font-family: 'Merriweather', serif; /* Updated font family */
+    line-height: 1.7; /* Increased line height for better readability */
+    color: #333; /* Keep dark grey for body text */
+    background-color: transparent; /* Set body background to transparent */
+    background-image: url('/images/Br%C3%BCckenbauer.jpg'); /* Set background image */
+    background-size: cover; /* Cover the entire background */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Keep the background image fixed while scrolling */
+    display: flex; /* Added flexbox */
+    flex-direction: column; /* Stack children vertically */
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* Ensure all content stays above the overlay */
+header, main, footer, section {
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #1a1a1a; /* Keep dark grey for headings, will be overridden for main h1 and specific h2s */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    /* Variable font settings inherited or set separately if needed */
+}
+
+/* Style for the main page titles on pages other than index */
+main:not(.index-page) h1 {
+    color: #fff; /* Set main page titles to white */
+    text-align: center; /* Keep centering */
+    margin-bottom: 2rem; /* Keep margin */
+}
+
+/* Style for the main page title on the index page (within the hero section) */
+.hero-content h1 {
+    color: #fff; /* Already white, keeping for clarity */
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    /* color controlled by specific rules */
+}
+
+h3 {
+    font-size: 1.5rem;
+    /* color controlled by specific rules */
+}
+
+p {
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    color: #555; /* Keep medium grey for paragraph text */
+}
+
+header {
+    background-color: var(--primary-color-dark);
+    padding: 0.75rem 0;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    margin-left: 0;
+}
+
+nav {
+    margin-right: 0;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #fff; /* Changed logo text color to white for contrast */
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.logo a img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff; /* Ensure nav link color is white */
+    font-size: 1rem;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color); /* Use secondary accent for underline */
+    transition: width 0.4s ease-in-out;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: var(--secondary-color); /* Use secondary accent for hover color */
+}
+
+/* Language Toggle Styles */
+.language-toggle {
+    position: relative;
+    margin-right: 2rem;
+    cursor: pointer;
+}
+
+.language-toggle:hover {
+    border-radius: 4px; /* Keep border radius for visual consistency */
+}
+
+.language-toggle .toggle-button {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-color); /* Changed to secondary accent color */
+    border: 1px solid var(--secondary-color); /* Changed to secondary accent color */
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff; /* Changed to white for better contrast */
+    font-weight: bold;
+    position: relative; /* Needed for ::after positioning */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Added background-color transition */
+}
+
+.language-toggle .toggle-button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color); /* Changed to secondary accent color */
+    transition: width 0.4s ease-in-out;
+}
+
+.language-toggle .toggle-button:hover::after,
+.language-toggle .toggle-button:focus::after {
+    width: 100%;
+}
+
+.language-toggle .toggle-button:hover,
+.language-toggle .toggle-button:focus {
+    background-color: var(--primary-color); /* Changed to primary accent for hover */
+    color: #fff; /* Keep white text */
+}
+
+.language-toggle .language-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--secondary-color); /* Changed to secondary accent color */
+    border: 1px solid var(--secondary-color); /* Changed to secondary accent color */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 100%;
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+}
+
+.language-toggle .language-options a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #fff; /* Changed to white for better contrast */
+    transition: background-color 0.3s ease;
+}
+
+.language-toggle .language-options a:hover {
+    background-color: var(--primary-color); /* Changed to primary accent for hover */
+    color: #fff; /* Keep white text */
+}
+
+/* Removed hover display rule */
+/* .language-toggle:hover .language-options { display: flex; } */
+
+/* Show language options when show-options class is present */
+.language-toggle .language-options.show-options {
+    display: flex;
+}
+
+/* Basic CTA Button Style */
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color); /* Reverted CTA button to secondary accent */
+    color: #fff; /* Use white */
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 174, 191, 0.2); /* Use secondary accent based shadow */
+}
+
+.cta-button:hover {
+    background-color: var(--primary-color); /* Use primary accent for hover */
+    box-shadow: 0 6px 12px rgba(0, 174, 191, 0.3); /* Use secondary accent based shadow */
+}
+
+.cta-button:active {
+    transform: scale(0.98);
+}
+
+/* General Container Style */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Main Content Padding */
+main {
+    flex-grow: 1; /* Allow main content to grow and push footer down */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+main .container {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Hero Section Styles */
+.hero {
+    background: linear-gradient(to right, 
+        rgba(21, 79, 124, 0.95), /* Darker version of primary color */
+        rgba(16, 58, 94, 0.95)   /* Darker version of primary-dark color */
+    );
+    color: #fff;
+    text-align: center;
+    padding: 6rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    color: #fff; /* Use white */
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9; /* Keep opacity */
+    color: #fff; /* Use white */
+}
+
+.hero-content .cta-button {
+    background-color: var(--secondary-color); /* Use secondary accent */
+    color: #fff; /* Use white */
+}
+
+.hero-content .cta-button:hover {
+    background-color: var(--primary-color); /* Use primary accent for hover */
+    color: #fff; /* Change text color to white on hover */
+}
+
+.hero-content .hero-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hero-content .hero-logo img {
+    max-width: 300px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(0, 174, 191, 0.4));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hero-content .hero-logo img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(0, 174, 191, 0.6));
+}
+
+/* Features Section Styles */
+.features {
+    padding: 4rem 0;
+    background-color: transparent; /* Set background to transparent */
+    text-align: center;
+}
+
+.features h2 {
+    margin-bottom: 3rem;
+    color: #fff; /* Set h2 color in features section to white */
+}
+
+.feature-items {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    flex: 1;
+    min-width: 250px;
+    padding: 2rem;
+    background-color: var(--primary-color); /* Changed to primary accent color */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Keep subtle grey shadow */
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #fff; /* Changed text color to white */
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.feature-item:hover h3,
+.feature-item:hover p {
+    color: var(--secondary-color);
+}
+
+.feature-item h3 {
+    color: #fff; /* Set h3 color in feature item to white */
+    margin-bottom: 1rem;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #fff; /* Set paragraph color to white */
+}
+
+/* Call to Action Contact Section Styles */
+.cta-contact {
+    background-color: rgba(0, 174, 191, 0.85); /* var(--secondary-color) with 85% opacity */
+    color: #fff; /* Use white */
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.cta-contact h2 {
+    color: #fff; /* Set h2 color in CTA contact section to white */
+    margin-bottom: 1.5rem;
+}
+
+.cta-contact p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    color: #fff; /* Use white */
+}
+
+.cta-contact .cta-button {
+    background-color: var(--primary-color); /* Use primary accent */
+    color: #fff; /* Use white */
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(33, 99, 144, 0.2); /* Use primary accent based shadow */
+}
+
+.cta-contact .cta-button:hover {
+    background-color: var(--secondary-color); /* Use secondary accent for hover */
+    color: #fff; /* Change text color to white on hover */
+    box-shadow: 0 6px 12px rgba(33, 99, 144, 0.3); /* Use primary accent based shadow on hover */
+}
+
+/* About Section Styles */
+.about-section {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: var(--primary-color); /* Changed to primary accent color */
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Keep subtle grey shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #fff; /* Changed text color to white */
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.about-section h2 {
+    color: #fff; /* Ensure h2 color is white */
+    margin-bottom: 2rem;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff; /* Set paragraph color to white */
+}
+
+/* History Section Styles */
+.history-section {
+    padding: 4rem 0;
+    background-color: transparent;
+    text-align: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.history-section:hover {
+    transform: translateY(-5px);
+}
+
+.history-section h2 {
+    color: white !important; /* Set h2 color to white in history section, using !important for priority */
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.history-timeline {
+    position: relative;
+    margin: 2rem 0;
+    overflow: visible;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.timeline-container {
+    position: relative;
+    height: 200px; /* Adjust based on your content */
+}
+
+.timeline-item {
+    position: absolute;
+    width: 90%;
+    max-width: 800px;
+    opacity: 0.3;
+    transform: translateX(-50%) translateY(150px) scale(0.8);
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 25px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: #fff;
+    left: 50%;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.timeline-item:hover {
+    box-shadow: 0 0 15px var(--secondary-color);
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    z-index: 3;
+}
+
+.history-timeline:has(.timeline-item:hover) .timeline-item {
+    animation-play-state: paused !important;
+}
+
+.timeline-item.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+    z-index: 2;
+}
+
+@keyframes cycleTimeline {
+    0% {
+        opacity: 0.3;
+        transform: translateX(-50%) translateY(150px) scale(0.8);
+        z-index: 1;
+    }
+    33% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+        z-index: 2;
+    }
+    66% {
+        opacity: 0.3;
+        transform: translateX(-50%) translateY(-150px) scale(0.8);
+        z-index: 1;
+    }
+    100% {
+        opacity: 0.3;
+        transform: translateX(-50%) translateY(150px) scale(0.8);
+        z-index: 1;
+    }
+}
+
+.timeline-item:nth-child(1) {
+    animation: cycleTimeline 9s infinite;
+}
+
+.timeline-item:nth-child(2) {
+    animation: cycleTimeline 9s infinite 3s;
+}
+
+.timeline-item:nth-child(3) {
+    animation: cycleTimeline 9s infinite 6s;
+}
+
+.timeline-item .year {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.timeline-item:hover .year {
+    color: var(--secondary-color);
+}
+
+.timeline-item .description {
+    flex-grow: 1;
+    padding-top: 0;
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.timeline-item .description p {
+    color: #fff;
+}
+
+/* Values Section Styles */
+.values-section {
+    padding: 2rem 0;
+    background-color: transparent;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.values-section:hover {
+    transform: translateY(-5px);
+}
+
+.values-section h2 {
+    color: #fff; /* Ensure h2 color is white */
+    margin-bottom: 3rem;
+}
+
+.value-items {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.value-item {
+    flex: 1;
+    min-width: 250px;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #fff;
+}
+
+.value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.value-item h3 {
+     color: #fff; /* Set h3 color to white */
+     margin-bottom: 1rem;
+}
+
+.value-item p {
+    font-size: 1rem;
+    color: #fff; /* Set paragraph color to white */
+}
+
+/* Services Section Styles */
+.services-list {
+    padding: 4rem 0;
+    background-color: var(--primary-color); /* Changed to primary accent color */
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Keep subtle grey shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #fff; /* Changed text color to white */
+}
+
+.services-list:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.services-list h2,
+.contact-info h2,
+.contact-form h2,
+.media-content h2,
+.office-hours h2,
+.map-location h2 {
+    color: #fff; /* Changed h2 color to white */
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.services-list ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.services-list ul li a {
+    display: block;
+    background-color: var(--secondary-color); /* Use secondary accent color for button background */
+    color: #fff; /* Keep white text color for button */
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 174, 191, 0.2); /* Use secondary accent based shadow */
+}
+
+.services-list ul li a:hover {
+    color: var(--secondary-color);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.services-list li {
+    list-style: none; /* Remove default list style */
+    margin-bottom: 1rem; /* Keep existing margin */
+    /* Remove other styling applied directly to li */
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+/* Service Detail Section Styles */
+.service-detail {
+    padding: 4rem 0;
+    background-color: var(--primary-color); /* Changed to primary accent color */
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Keep subtle grey shadow */
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #fff; /* Changed text color to white */
+}
+
+.service-detail:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.service-detail h2 {
+    color: #fff; /* Change h2 color to white */
+    margin-bottom: 1.5rem;
+}
+
+.service-detail p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    color: #fff; /* Change paragraph color to white */
+}
+
+.service-detail .cta-button {
+    margin-top: 1rem;
+}
+
+/* Contact Section Styles */
+.contact-info,
+.contact-form {
+    padding: 3rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: none;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #fff;
+}
+
+.contact-info:hover,
+.contact-form:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.contact-info h2,
+.contact-form h2 {
+     margin-bottom: 1.5rem;
+     color: #fff; /* Change h2 color to white */
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #fff; /* Change list item color to white */
+}
+
+.contact-info li a {
+    text-decoration: none;
+    color: #fff; /* Ensure contact info link color is white */
+    transition: color 0.3s ease;
+}
+
+.contact-info li a:hover {
+    color: var(--secondary-color); /* Ensure contact info link hover color is secondary accent */
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #fff; /* Change label color to white */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--secondary-color); /* Keep border color as secondary accent */
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Merriweather', serif;
+    color: #333; /* Keep dark grey for input text */
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button.cta-button {
+    width: auto;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+/* Office Hours Section Styles */
+.office-hours {
+    padding: 3rem 0;
+    text-align: center;
+    background-color: var(--primary-color); /* Changed to primary accent color */
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Keep subtle grey shadow */
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 2rem auto;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #fff; /* Changed text color to white */
+}
+
+.office-hours:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.office-hours h2 {
+    color: #fff; /* Change h2 color to white */
+    margin-bottom: 1.5rem;
+}
+
+.office-hours p {
+    font-size: 1.1rem;
+    color: #fff; /* Change paragraph color to white */
+    margin-bottom: 0.8rem;
+}
+
+.office-hours p:last-child {
+    margin-bottom: 0;
+}
+
+/* Media Section Styles */
+.media-content {
+     padding: 4rem 0;
+     background-color: transparent; /* Changed to primary accent color */
+     margin-bottom: 2rem;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Keep subtle grey shadow */
+     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+     border-radius: 8px;
+     overflow: hidden;
+     color: #fff; /* Changed text color to white */
+}
+
+.media-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: center;
+}
+
+.media-item {
+    background-color: var(--primary-color); /* Changed to primary accent color */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Keep subtle grey shadow */
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #fff; /* Changed text color to white */
+}
+
+.media-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.media-item h3 {
+    color: #fff; /* Change h3 color to white */
+    margin-bottom: 1rem;
+}
+
+.media-item p {
+    color: #fff; /* Change paragraph color to white */
+    margin-bottom: 1.5rem;
+}
+
+.media-item .cta-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+
+.media-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Video Container Styles */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-bottom: 2rem;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 400px;
+}
+
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Map Location Section Styles */
+.map-location {
+    padding: 4rem 0;
+    background-color: var(--primary-color); /* Changed to primary accent color */
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Add subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #fff; /* Changed text color to white */
+}
+
+.map-location:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.map-location h2 {
+    color: #fff; /* Change h2 color to white */
+    margin-bottom: 2rem;
+}
+
+.map-location iframe {
+    max-width: 100%;
+    height: 350px;
+    border: 1px solid #ccc; /* Keep light grey border */
+    border-radius: 8px;
+}
+
+.map-location small {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #fff; /* Ensure map location small link color is white */
+}
+
+.map-location small a {
+    color: #fff; /* Ensure map location small link color is white */
+    text-decoration: none;
+}
+
+.map-location small a:hover {
+    text-decoration: underline;
+    color: var(--secondary-color); /* Ensure map location small link hover color is secondary accent */
+}
+
+/* Burger Menu Styles */
+.burger-icon {
+    display: none; /* Hidden by default on larger screens */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1100; /* Above the sticky header and nav */
+    margin-right: 2rem;
+}
+
+.burger-icon .line {
+    width: 100%;
+    height: 3px;
+    background-color: #fff; /* Changed to white */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styles for when the burger is active (optional, can be used for animation) */
+.burger-icon.active .line:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.burger-icon.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-icon.active .line:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background-color: var(--primary-color-dark);
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    body {
+        padding-top: 4rem;
+        overflow-x: hidden;
+        margin: 0;
+        width: 100%;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        background-color: var(--primary-color-dark);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 5rem 0 0 0;
+        text-align: center;
+        max-height: 0;
+        overflow-y: auto;
+        transition: max-height 0.6s ease-in-out, transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+        transform: translateY(-100%);
+        opacity: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    nav ul li a {
+        color: #fff;
+        padding: 2rem;
+        display: block;
+        text-align: center;
+        font-size: 1.8rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    header.nav-open nav {
+        max-height: 100vh;
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    header.nav-open::after {
+        display: none;
+    }
+
+    body.nav-open {
+        overflow: hidden;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    /* Show the burger icon on small screens */
+    .burger-icon {
+        display: flex;
+        position: static;
+        margin-right: 1rem; /* Space between burger and language toggle */
+        top: auto;
+        right: auto;
+    }
+
+    /* Language Toggle Styles */
+    .language-toggle {
+        position: relative; /* Keep position relative for dropdown positioning */
+        margin-right: 1rem; /* Add space to the right */
+        display: flex; /* Use flex to align button and dropdown trigger */
+        align-items: center; /* Vertically center items */
+    }
+
+    .language-toggle .toggle-button {
+        padding: 0.5rem 0.8rem;
+        color: #fff; /* Keep white text */
+    }
+
+    .language-toggle .language-options {
+        /* Position dropdown on mobile */
+        left: auto; /* Ensure left positioning is reset */
+        right: 0; /* Align dropdown to the right */
+        min-width: unset; /* Allow dropdown to shrink to content size */
+        white-space: nowrap; /* Prevent text wrapping in dropdown items */
+    }
+
+    .hero {
+        padding: 4rem 1rem;
+        min-height: 40vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .features .feature-item {
+        flex-basis: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .features .feature-items {
+        gap: 1.5rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .media-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .media-item {
+        min-width: unset;
+        max-width: 90%;
+    }
+
+    .language-toggle .language-options a {
+        color: #fff; /* Keep white text */
+    }
+}
+
+/* Scroll Reveal Styles */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    background-color: var(--primary-color-dark); /* Set footer background to darker primary accent color */
+    color: #fff; /* Set footer text color to white */
+    text-align: center;
+    padding: 1.5rem 0; /* Reduced vertical padding */
+    margin-top: 2rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow at the top */
+}
+
+footer p {
+    margin: 0;
+    color: #fff; /* Ensure paragraph text in footer is white */
+}
+
+.footer-links a {
+    color: #fff; /* Ensure footer link color is white */
+    text-decoration: none;
+    margin: 0 10px; /* Add some space between links */
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color); /* Ensure footer link hover color is secondary accent */
+}
+
+/* Style for h2 and h3 elements within various sections on pages other than index */
+main:not(.index-page) .about-section h2,
+main:not(.index-page) .history-section h2,
+main:not(.index-page) .values-section h2,
+main:not(.index-page) .team-section h2,
+main:not(.index-page) .services-list h2,
+main:not(.index-page) .service-detail h2,
+main:not(.index-page) .contact-info h2,
+main:not(.index-page) .contact-form h2,
+main:not(.index-page) .office-hours h2,
+main:not(.index-page) .media-content h2,
+main:not(.index-page) .map-location h2,
+main:not(.index-page) .about-section h3,
+main:not(.index-page) .history-section h3,
+main:not(.index-page) .values-section h3,
+main:not(.index-page) .team-section h3,
+main:not(.index-page) .services-list h3,
+main:not(.index-page) .service-detail h3,
+main:not(.index-page) .contact-info h3,
+main:not(.index-page) .contact-form h3,
+main:not(.index-page) .office-hours h3,
+main:not(.index-page) .media-content h3,
+main:not(.index-page) .map-location h3
+{
+    color: #fff; /* Set h2 and h3 color to white on non-index pages */
+}
+
+/* General Link Styles */
+a {
+    color: #fff; /* Set default link color to white */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color); /* Set default link hover color to secondary accent */
+}
+
+/* Contact Items Styles */
+.contact-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    background-color: rgba(33, 99, 144, 0.9);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    color: #fff;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px 10px rgba(0, 174, 191, 0.6);
+}
+
+.contact-item h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.contact-item p {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.contact-item a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--secondary-color);
+}
